@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: learning-k8s-argocd-app
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  source:
+    repoURL: https://github.com/thomas-delalande/learning-k8s-argocd
+    targetRevision: HEAD
+    path: kubernetes
+  project: default
