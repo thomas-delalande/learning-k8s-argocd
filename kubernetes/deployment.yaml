@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: learning-k8s-argocd
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: learning-k8s-argocd
+  template:
+    metadata:
+      labels:
+        app: learning-k8s-argocd
+    spec:
+      containers:
+        - name: learning-k8s-argocd
+          image: learning-k8s-argocd:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080

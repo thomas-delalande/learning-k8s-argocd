@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: learning-k8s-argocd
+spec:
+  type: LoadBalancer
+  selector:
+    app: learning-k8s-argocd
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
