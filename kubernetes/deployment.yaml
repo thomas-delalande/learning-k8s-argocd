@@ -15,6 +15,6 @@ spec:
       containers:
         - name: learning-k8s-argocd
           image: learning-k8s-argocd:latest
-          imagePullPolicy: Never
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080

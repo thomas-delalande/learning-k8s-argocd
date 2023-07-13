@@ -40,5 +40,4 @@ Running this as is requires the following dependencies:
 
 - Setup a persistent database alongside Kubernetes
 - Setup secret management using Kubernetes
-- Change Image Pull Policy when running locally/remotelly
 - Setup remote kubernetes cluster
