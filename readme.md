@@ -18,8 +18,11 @@ Running this as is requires the following dependencies:
 # To access the ArgoCD UI on localhost:8080
 ./scripts/port-forward-argocd-ui.sh
 
-# Once synchronised, to access the server on localhost:8181
+# Once synchronised
 ./scripts/port-forward-server.sh
+
+# You can now access the server on http://localhost:8081/
+# and the secret value on http://localhost:8081/secret
 
 # To remove resources and stop minikube
 ./scripts/teardown.sh
@@ -39,5 +42,4 @@ Running this as is requires the following dependencies:
 ## Todo
 
 - Setup a persistent database alongside Kubernetes
-- Setup secret management using Kubernetes
 - Setup remote kubernetes cluster

@@ -18,3 +18,10 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
+          env:
+            - name: SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: secretValue
+
