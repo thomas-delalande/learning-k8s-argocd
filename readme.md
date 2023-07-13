@@ -34,3 +34,11 @@ Running this as is requires the following dependencies:
 ### Server Response
 
 ![Server Response](./docs/image-2-server-response.png)
+
+
+## Todo
+
+- Setup a persistent database alongside Kubernetes
+- Setup secret management using Kubernetes
+- Change Image Pull Policy when running locally/remotelly
+- Setup remote kubernetes cluster
