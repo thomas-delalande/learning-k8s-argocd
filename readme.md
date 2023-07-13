@@ -23,6 +23,7 @@ Running this as is requires the following dependencies:
 
 # You can now access the server on http://localhost:8081/
 # and the secret value on http://localhost:8081/secret
+# and the database on http://localhost:8081/postgres?value=my-custom-value
 
 # To remove resources and stop minikube
 ./scripts/teardown.sh
@@ -38,8 +39,3 @@ Running this as is requires the following dependencies:
 
 ![Server Response](./docs/image-2-server-response.png)
 
-
-## Todo
-
-- Setup a persistent database alongside Kubernetes
-- Setup remote kubernetes cluster

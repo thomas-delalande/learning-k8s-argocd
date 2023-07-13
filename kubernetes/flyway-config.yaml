@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-migrations-config
+data:
+  V1_1__create_test_table.sql: |
+    CREATE TABLE test(
+      value TEXT
+    );

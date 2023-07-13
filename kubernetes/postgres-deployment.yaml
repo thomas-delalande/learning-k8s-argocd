@@ -1,34 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: learning-k8s-argocd
+  name: postgres-deployment
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: learning-k8s-argocd
+      app: postgres
   template:
     metadata:
       labels:
-        app: learning-k8s-argocd
+        app: postgres
     spec:
       containers:
-        - name: learning-k8s-argocd
-          image: learning-k8s-argocd:latest
-          imagePullPolicy: IfNotPresent
+        - name: postgres
+          image: postgres:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 5432
           env:
-            - name: SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: secret
-                  key: secretValue
-            - name: DATABASE_URL
+            - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
                   name: postgres-secret
-                  key: databaseUrl
+                  key: postgresUser
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: postgresPassword
           volumeMounts:
             - name: postgres-persistent-storage
               mountPath: /var/lib/postgresql/data

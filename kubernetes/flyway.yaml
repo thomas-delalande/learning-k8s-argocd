@@ -1,0 +1,40 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: flyway
+spec:
+  template:
+    spec:
+      containers:
+        - name: flyway
+          image: flyway/flyway:latest
+          command: ["flyway"]
+          args:
+            [
+              "-url=jdbc:postgresql://postgres-service:5432/postgres",
+              "-user=$(FLYWAY_USERNAME)",
+              "-password=$(FLYWAY_PASSWORD)",
+              "-connectRetries=60",
+              '-locations=filesystem:/flyway/sql',
+              "migrate",
+            ]
+          env:
+            - name: FLYWAY_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: postgresUser
+            - name: FLYWAY_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: postgresPassword
+          volumeMounts:
+            - mountPath: /flyway/sql
+              name: sql
+      restartPolicy: Never
+      volumes:
+        - name: sql
+          configMap:
+            name: postgres-migrations-config
+  backoffLimit: 1
